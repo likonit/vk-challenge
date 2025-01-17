@@ -1,0 +1,89 @@
+.mainblock {
+    display: grid;
+    margin-top: 10vh;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+}
+
+.mainblock__column {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.photoBlock {
+    position: relative;
+    padding: 10px;
+    width: calc((100vw - 16px) / 5);
+}
+
+.photoBlock__photo {
+    width: 100%;
+    height: auto;
+    border-radius: 20px;
+    transition: .3s;
+    will-change: transform; /* без этого свойства будет мигать картинка на долю секунды */
+}
+
+.photoBlock__status, .photoBlock__status_disable {
+    position: absolute;
+    z-index: 1;
+    bottom: 25px;
+    right: 25px;
+    font-size: 30px;
+    transition: .3s;
+    opacity: 0;
+}
+
+.photoBlock__status {
+    opacity: 1;
+}
+
+.photoBlock__status:hover + .photoBlock__photo, .photoBlock__photo:hover {
+    transition: .3s;
+    box-shadow: 0 0 5px #777;
+    transform: scale(1.02);
+}
+
+.photoBlock__status__heart_active, .photoBlock__status__heart, .photoBlock__status__heart_clicked {
+    transition: .3s;
+    color: #F24E1E;
+    cursor: pointer;
+    z-index: 0;
+}
+
+.photoBlock__status__heart_clicked {
+    color: #FF3A00;
+}
+
+@media screen and (max-width: 1000px) {
+
+    .photoBlock {
+        padding: 5px;
+    }
+
+}
+
+@media screen and (max-width: 740px) {
+
+    .photoBlock {
+        width: calc((100vw) / 3);
+    }
+
+    .photoBlock__status, .photoBlock__status_disable {
+        font-size: 18px;
+    }
+
+    .mainblock {
+        margin-top: 7vh;
+    }
+
+}
+
+@media screen and (max-width: 476px) {
+
+    .photoBlock {
+        position: relative;
+        width: calc((100vw - 0px) / 2);
+    }
+
+}
